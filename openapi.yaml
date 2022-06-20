@@ -1,0 +1,1228 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /vendita/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: Update Vendita
+      description: 'Aggiornamento della vendita,è possibile aggiornare inserendo nel path l''id di riferimento e nel body i campi : data,prezzo,targa '
+      operationId: updateVendita
+      parameters:
+        - name: id
+          in: path
+          description: Id della vendita da aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vendita'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Vendita'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Vendita'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Vendita'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /modello/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: Update Modello
+      description: 'Aggiorna il nome del modello dell''autovettura,inserire l''id di riferimento nel path e descrizione,annoProduzione nel body '
+      operationId: updateModello
+      parameters:
+        - name: id
+          in: path
+          description: Id del modello da aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Modello'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Modello'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Modello'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Modello'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /costruttore/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: Update Costruttore
+      description: Aggiorna il costruttore dell'auto ovvero il marchio appartenente all'autovettura,inserire l'id di riferimento nel path e il marchio nel body
+      operationId: updateCostruttore
+      parameters:
+        - name: id
+          in: path
+          description: Id del costruttore da aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Costruttore'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /configurazioneModello/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: 'Update Configurazione/Modello '
+      description: 'Aggiorna la tabelle inerente le configurazioni/modello,ovvere le caratteristiche dell''auto presente e NON. Inserire l''id di riferimento nel path '
+      operationId: updateconfigurazioneModello
+      parameters:
+        - name: id
+          in: path
+          description: Id della Configurazine/Modello da aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurazioneModello'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConfigurazioneModello'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConfigurazioneModello'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConfigurazioneModello'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /configurazione/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: Update Configurazione
+      description: 'Aggiorna il nome della configurazione (versione dell''auto ex: sport line),inserire l''id di riferimento nel path e la descrizione nel body'
+      operationId: updateConfigurazione
+      parameters:
+        - name: id
+          in: path
+          description: Id della configurazione da aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Configurazione'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Configurazione'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Configurazione'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Configurazione'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /cliente/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: Update Cliente
+      description: Update delle informazioni relative al cliente
+      operationId: updateCliente
+      parameters:
+        - name: id
+          in: path
+          description: Id del cliente aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteDTO'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ClienteDTO'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ClienteDTO'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ClienteDTO'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /autovettura/put/{id}:
+    put:
+      tags:
+        - concessionario-controller
+      summary: Update Autovettura
+      description: 'Aggiornamento con json custom  posso passare entrambi i valori o uno alla volta '
+      operationId: updateAutovettura
+      parameters:
+        - name: id
+          in: path
+          description: Id dell'autovettura da aggiornare. Non può essere vuoto.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutovetturaDTO'
+        required: true
+      responses:
+        '200':
+          description: Update Completato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AutovetturaDTO'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AutovetturaDTO'
+        '404':
+          description: ID url non trovato
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AutovetturaDTO'
+        '405':
+          description: Path errato
+          content:
+            application/json: {}
+  /vendita/{x_ntelaio}/{x_codice_fiscale}/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Aggiunge una vendita con cliente esistente
+      description: Se il cliente ha gia acquistato un autovettura in precedenza con questo metodo basta inserire soltando il codice fiscale per riferimento al cliente
+      operationId: addVendita
+      parameters:
+        - name: x_ntelaio
+          in: path
+          description: Chiave Esterna del telaio in riferimento all'autovettura
+          required: true
+          schema:
+            type: string
+        - name: x_codice_fiscale
+          in: path
+          description: Chiave Esterna del Codice Fiscale in riferimento al cliente
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vendita'
+        required: true
+      responses:
+        '201':
+          description: Vendita inserita
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Vendita'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Vendita'
+        '409':
+          description: Vendita già presente
+          content:
+            application/json: {}
+  /modello/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Post Modello
+      operationId: addModello
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Modello'
+        required: true
+      responses:
+        '201':
+          description: Modello inserito
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Modello'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Modello'
+        '409':
+          description: Modello già presente
+          content:
+            application/json: {}
+  /costruttore/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Aggiungi Costruttore
+      description: Aggiunge un nuovo costruttore ovvero il marchio dell'auto
+      operationId: addCostruttore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Costruttore'
+        required: true
+      responses:
+        '201':
+          description: Costruttore inserito
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '409':
+          description: Costruttore già presente
+          content:
+            application/json: {}
+  /configurazione/{x_id_costruttore}/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Aggiungi Configurazione
+      description: 'Inserisce una nuova configurazione ovvero la versione dell''auto ex : sport line'
+      operationId: addConfigurazione
+      parameters:
+        - name: x_id_costruttore
+          in: path
+          description: Chiave Esterna del costruttore ,inserire un valore di riferimento
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Configurazione'
+        required: true
+      responses:
+        '201':
+          description: Configurazione inserita
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Configurazione'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Configurazione'
+        '409':
+          description: Configurazione già presente
+          content:
+            application/json: {}
+  /autovettura/{x_id_ConfigurazioneModello}/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Post Configurazione/Modello
+      description: Aggiunge una nuova autovettura definendo nel path l'id della configurazione esistente
+      operationId: addAutovettura
+      parameters:
+        - name: x_id_ConfigurazioneModello
+          in: path
+          description: Chiave Esterna della configurazione/modello,inserire un valore di riferimento
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Autovettura'
+        required: true
+      responses:
+        '201':
+          description: Autovettura inserita
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Autovettura'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Autovettura'
+        '409':
+          description: Autovettura già presente
+          content:
+            application/json: {}
+  /addVenditaCliente/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Aggiunge una vendita con nuovo cliente
+      description: Aggiunge una vendita inserendo anche i campi relativi al nuovo cliente
+      operationId: addVendita_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VenditaDTO'
+        required: true
+      responses:
+        '201':
+          description: Vendita inserita
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VenditaDTO'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VenditaDTO'
+        '409':
+          description: Vendita con relativo cliente già presente
+          content:
+            application/json: {}
+  /addConfigurazioneModello/post:
+    post:
+      tags:
+        - concessionario-controller
+      summary: Aggiunge una nuova configurazione/modello
+      description: Aggiunge una nuova configurazione/modello prendendento in input la fk di modelli e configurazione. Successivamente è possibile chiamare la Post di Autovettura per completare l'inserimento dell'auto nel concessionario
+      operationId: addConfigurazioneModello
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+        required: true
+      responses:
+        '201':
+          description: Configurazione/Modello creata
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+        '400':
+          description: Input non valido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+        '409':
+          description: Configurazione/Modello già esistente
+          content:
+            application/json: {}
+  /modello:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Modelli
+      operationId: getAllModelli
+      responses:
+        '200':
+          description: Risultati Ottenuti
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Modello'
+        '404':
+          description: Modelli non trovati
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Modello'
+  /modello/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Modello BY ID
+      operationId: getModelloByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Modello'
+        '404':
+          description: Modello by id non trovato
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Modello'
+  /getVenditeClienti:
+    get:
+      tags:
+        - concessionario-controller
+      summary: 'Get delle vendite con i relativi clienti '
+      operationId: getAllVenditeClienti
+      responses:
+        '200':
+          description: Risultati Ottenuto
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VenditaDTO'
+        '404':
+          description: Vendite non trovate
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/VenditaDTO'
+  /getVenditeClienti/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: 'Get vendita con cliente per id '
+      description: Get della vendita con relativo cliente indicando il riferimento dell'id
+      operationId: getAllVenditeClientiByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VenditaDTO'
+        '404':
+          description: Vendita non trovata
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/VenditaDTO'
+  /getAllCarInside:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get delle auto presenti nel concessionario
+      description: Trova le auto presenti nel concessionario disponibile per la vendita
+      operationId: getAllCarInside
+      responses:
+        '200':
+          description: Risultati Ottenuti
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+        '404':
+          description: Auto non trovate
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+  /getAllCarInside/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get auto presente nel concessionario
+      description: Trova l'auto per id presente nel concessionario disponibile per la vendita
+      operationId: getconfigurazioneModelloByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+        '404':
+          description: Auto non trovata
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/ConfigurazioneModelloDTO'
+  /costruttore:
+    get:
+      tags:
+        - concessionario-controller
+      summary: 'Get dei costruttori EX: FORD'
+      operationId: getAllCostruttori
+      responses:
+        '200':
+          description: Risultati Ottenuti
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '404':
+          description: Configurazioni non trovate
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Costruttore'
+  /costruttore/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Costruttore By Id
+      operationId: getCostruttoreByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Costruttore'
+        '404':
+          description: Costruttore by id non trovato
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Costruttore'
+  /configurazione:
+    get:
+      tags:
+        - concessionario-controller
+      summary: 'Get delle configurazioni EX: SPORT EDITION'
+      operationId: getAllConfigurazioni
+      responses:
+        '200':
+          description: Risultati Ottenuti
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Configurazione'
+        '404':
+          description: Configurazioni non trovate
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Configurazione'
+  /configurazione/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Configurazione By Id
+      operationId: getConfigurazioneByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Configurazione'
+        '404':
+          description: Configurazione by id non trovata
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Configurazione'
+  /cliente:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get clienti che hanno acquistato un veicolo
+      operationId: getAllClienti
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+        '404':
+          description: Clienti non trovati
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Cliente'
+  /cliente/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Cliente BY ID
+      operationId: getClienteByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404':
+          description: Cliente non trovato
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Cliente'
+  /autovettura:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Autovetture
+      operationId: getAllAutovettura
+      responses:
+        '200':
+          description: Risultati Ottenuti
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Autovettura'
+        '404':
+          description: Auto non trovate
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Autovettura'
+  /autovettura/{id}:
+    get:
+      tags:
+        - concessionario-controller
+      summary: Get Autovettura BY ID
+      operationId: getAutuvetturaByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Risultato Ottenuto
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Autovettura'
+        '404':
+          description: Auto by id non trovata
+          content:
+            '*/*':
+              schema:
+                type: string
+                not:
+                  $ref: '#/components/schemas/Autovettura'
+components:
+  schemas:
+    Autovettura:
+      type: object
+      properties:
+        configurazioniModelli:
+          $ref: '#/components/schemas/ConfigurazioneModello'
+        ntelaio:
+          type: string
+    Cliente:
+      required:
+        - codiceFiscale
+      type: object
+      properties:
+        codiceFiscale:
+          pattern: ^[A-Za-z]{6}[0-9]{2}[A-Za-z][0-9]{2}[A-Za-z][0-9]{3}[A-Za-z]$
+          type: string
+          description: Codice Fiscale,identificatore univoco del Cliente .
+          example: MRCPLA92S22I544C
+        vendite:
+          type: array
+          writeOnly: true
+          items:
+            $ref: '#/components/schemas/Vendita'
+        nome:
+          type: string
+        cognome:
+          type: string
+    Configurazione:
+      required:
+        - descrizione
+      type: object
+      properties:
+        idConfigurazione:
+          type: integer
+          description: 'Identificatore univoco della configurazione autogenerato '
+          format: int32
+          example: 1
+        descrizione:
+          type: string
+          description: 'Nome della configurazione dell''autovettura '
+          example: Sport line
+        costruttore:
+          $ref: '#/components/schemas/Costruttore'
+      description: 'Chiave primaria della configurazione,assegnare un valore di riferimento '
+      example: 1
+    ConfigurazioneModello:
+      required:
+        - alimentazione
+        - cilindrata
+        - colore
+        - kw_t
+        - tipoCambio
+        - url
+      type: object
+      properties:
+        idConfigurazioneModello:
+          type: integer
+          description: Identificatore univoco della Configurazione/Modello autogenerato.
+          format: int32
+          example: 1
+        alimentazione:
+          type: string
+          description: Alimentazione dell'autovettura
+          example: Benzina
+        cilindrata:
+          type: integer
+          description: Cilindrata dell'autovettura espressa in cm³
+          format: int32
+          example: 1600
+        tipoCambio:
+          type: string
+          description: Tipologia del cambio dell'autovettura
+          example: Automatico
+        colore:
+          type: string
+          description: Colore dell'autovettura
+          example: Rosso Etna
+        url:
+          type: string
+          description: 'Url dell''immagine da visualizzare nella dashbord '
+          example: https://i.postimg.cc/qqXThVVm/volkswagen-tiguan-removebg-preview.png
+        configurazione:
+          $ref: '#/components/schemas/Configurazione'
+        modello:
+          $ref: '#/components/schemas/Modello'
+        autovetture:
+          type: array
+          items:
+            $ref: '#/components/schemas/Autovettura'
+        kw_t:
+          type: integer
+          description: Rapporto peso potenza dell'autovettura espresso in KW
+          format: int32
+          example: 90
+    Costruttore:
+      required:
+        - marchio
+      type: object
+      properties:
+        idCostruttore:
+          type: integer
+          description: Identificatore univoco del costruttore autogenerato.
+          format: int32
+          example: 1
+        marchio:
+          type: string
+          description: Marchio dell'autovettura
+          example: Alfa Romeo
+      description: 'Chiave esterna del costruttore '
+      example: 1
+    Modello:
+      required:
+        - annoProduzione
+        - descrizione
+      type: object
+      properties:
+        idModello:
+          type: integer
+          description: Identificatore univoco del modello autogenerato.
+          format: int32
+          example: 1
+        descrizione:
+          type: string
+          description: Nome del modello dell'autovettura
+          example: Giulietta
+        annoProduzione:
+          type: integer
+          description: Anno di produzione del veicolo
+          format: int32
+      description: 'Chiave primaria del modello,assegnare un valore di riferimento '
+      example: 1
+    Vendita:
+      required:
+        - data
+        - prezzo
+        - targa
+      type: object
+      properties:
+        idVendita:
+          type: integer
+          description: Identificatore univoco della vendita autogenerato.
+          format: int32
+          example: 1
+        data:
+          type: string
+          description: Data della vendita in formato Americano.
+          format: date-time
+        prezzo:
+          type: integer
+          description: Prezzo della vendita in Euro
+          format: int32
+          example: 18000
+        targa:
+          type: string
+          description: Targa dell'auto venduta
+          example: DB877SA
+        cliente:
+          $ref: '#/components/schemas/Cliente'
+        autovettura:
+          $ref: '#/components/schemas/Autovettura'
+    ClienteDTO:
+      required:
+        - codiceFiscale
+        - cognome
+        - nome
+      type: object
+      properties:
+        codiceFiscale:
+          type: string
+          description: Codice Fiscale,identificatore univoco del Cliente .
+          example: MRCPLA92S22I544C
+        nome:
+          type: string
+          description: Nome del cliente.
+          example: Paolo
+        cognome:
+          type: string
+          description: Cognome del cliente.
+          example: Marciante
+    AutovetturaDTO:
+      required:
+        - ntelaio
+        - x_id_configurazione_modello
+      type: object
+      properties:
+        x_id_configurazione_modello:
+          type: integer
+          description: Identificatore univoco della Configurazione/Modello.
+          format: int32
+          example: 1
+        ntelaio:
+          type: string
+          description: Numero del telaio dell'autovettura venduta (17 CARATTERI)
+          example: 1HGBH41JXMN109186
+    VenditaDTO:
+      required:
+        - codiceFiscale
+        - cognome
+        - data
+        - nome
+        - prezzo
+        - targa
+      type: object
+      properties:
+        idVendita:
+          type: integer
+          description: Identificatore univoco della vendita autogenerato.
+          format: int32
+          example: 1
+        data:
+          type: string
+          description: Data della vendita in formato Americano.
+          format: date-time
+        prezzo:
+          type: integer
+          description: Prezzo della vendita in Euro
+          format: int32
+          example: 18000
+        nome:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Nome del cliente.
+          example: Paolo
+        cognome:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Cognome del cliente.
+          example: Marciante
+        codiceFiscale:
+          maxLength: 16
+          minLength: 16
+          pattern: ^[A-Za-z]{6}[0-9]{2}[A-Za-z][0-9]{2}[A-Za-z][0-9]{3}[A-Za-z]$
+          type: string
+          description: Codice Fiscale del cliente che ha acquistato l'autovettura (16 CARATTERI)
+          example: MRCPLG76A22I544C
+        targa:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Targa dell'auto venduta
+          example: DB877SA
+        ntelaio:
+          type: string
+    ConfigurazioneModelloDTO:
+      required:
+        - alimentazione
+        - annoProduzione
+        - cilindrata
+        - colore
+        - tipoCambio
+        - url
+      type: object
+      properties:
+        idConfigurazioneModello:
+          type: integer
+          description: Identificatore univoco della Configurazione/Modello autogenerato.
+          format: int32
+          example: 1
+        alimentazione:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Alimentazione dell'autovettura
+          example: Benzina
+        cilindrata:
+          type: integer
+          description: Cilindrata dell'autovettura espressa in cm³
+          format: int32
+          example: 1600
+        tipoCambio:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Tipologia del cambio dell'autovettura
+          example: Automatico
+        colore:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: Colore dell'autovettura
+          example: Rosso Etna
+        annoProduzione:
+          type: integer
+          description: Anno di produzione del veicolo
+          format: int32
+        configurazione:
+          type: string
+          description: 'Nome della configurazione dell''autovettura '
+          example: Sport line
+        marchio:
+          type: string
+          description: Marchio dell'autovettura
+          example: Alfa Romeo
+        n_telai:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        url:
+          type: string
+          description: 'Url dell''immagine da visuliazzira nella dashbord '
+          example: https://i.postimg.cc/qqXThVVm/volkswagen-tiguan-removebg-preview.png
+        idModello:
+          type: integer
+          description: Chiave Esterna del modello,inserire oltre ai campi richiesti inserire un id di riferimento.
+          format: int32
+          writeOnly: true
+          example: 1
+        idConfigurazione:
+          type: integer
+          description: Chiave Esterna della configurazione,inserire oltre ai campi richiesti inserire un id di riferimento.
+          format: int32
+          writeOnly: true
+          example: 1
+        kw_T:
+          type: integer
+          format: int32
+        modello:
+          type: string
